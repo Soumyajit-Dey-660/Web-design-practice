@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 2em 1em;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+    padding: 0.5em;
+}
+
+h2 {
+    padding-bottom: 0.5em;
+}
+
+main {
+    margin-bottom: 1.5em;
+    
+}
+
+.light-font {
+    font-weight: 300;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.text-xl {
+    font-size: 2.25rem;
+}
+
+.text-l {
+    font-size: 1.5rem;
+}
+
+.border-style {
+    border: 2px solid #E5E5E5;
+    border-radius: 0.25em;
+    margin: 1em;
+    padding: 0.25em;
+}
+
+.description {
+    min-height: 100vh;
+    min-width: 90vh;
+    background-color: #EEEEEE;
+    border-radius: 0.5em;
+}
+
+.img-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.img-description > img {
+    margin: 0 auto;
+    height: auto;
+    width: auto;
+    border-radius: 50%;
+}
+
+.img-caption {
+    margin: 0 0.5em;
+    padding: 0.75em;
+    background-color: #DDDDDD;
+}
+
+.achievement-header {
+    margin: 1em 0.5em;
+}
+
+.achievement-list {
+    padding: 0 0.5em 0 3em;
+}
+
+.achievement-footer {
+    font-style: italic;
+    padding: 1em 0 2em 0;
+}
+
+footer > p {
+    font-style: italic;
+}
