@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    background-color: #218380;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+    padding: 0 0.5em;
+    height: 100px;
+}
+
+main {
+    height: calc(80vh - 100px);
+    position: relative;
+}
+
+.card {
+    height: 50%;
+    width: 50%;
+    border: 1px solid rgb(167, 166, 166);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 4em 3em 3em;
+    border-radius: 1.25em;
+    -moz-box-shadow: 10px 0px 10px -5px rgb(167, 166, 166),
+    0px 10px 10px -5px rgb(167, 166, 166);;
+    -webkit-box-shadow: 10px 0px 10px -5px rgb(167, 166, 166),
+    0px 10px 10px -5px rgb(167, 166, 166);;
+    box-shadow: 10px 0px 10px -5px rgb(167, 166, 166),
+    0px 10px 10px -5px rgb(167, 166, 166);
+}
+
+.cta-btn {
+    padding: 1em 1em;
+    border-radius: 0.5em;
+    background-color: #218380;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#leaderboard {
+    cursor: pointer;
+}
+
+.answer-option {
+    background-color: #218380;
+    margin: 0.5em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    color: white;
+    cursor: pointer;
+}
+
+input {
+    padding: 0.5em;
+}

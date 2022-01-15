@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Codedamn - Quiz Project</title>
+</head>
+
+<body>
+    <header>
+        <a id=leaderboard>View Highscores <i class="fas fa-hand-point-left fa-lg"></i>
+        </i></a> 
+        <h3>Time: </h3>
+    </header>
+    <main>
+        <div class="card">
+            <div id="highscores-list">
+                <h2>Highscores</h2>
+                <ol id='score-list'>
+                    No scores to display
+                </ol>
+                <div class="btn-container">
+                    <button class="cta-btn" id="go-back-btn">Go Back</button>
+                    <button class="cta-btn" id="clear-scores">Clear Highscores</button>
+                </div>
+            </div>
+            <div id="start-quiz">
+                <h2>Coding Quiz Challenge</h2>
+                <p>Try to answer to following code-related questions within the time limit.<br/><br>Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+                </p>
+                <button class="cta-btn" id='start-quiz-btn'>Start Quiz</button>
+            </div>
+            <div id="quiz-questions"></div>
+            <div id="all-done">
+                <h2>All Done!</h2>
+                <p>Your final score is <span id="score"></span>.</p>
+                <div>Enter initials: 
+                    <input type="text" name="initials" id="initials">
+                    <button class='cta-btn'>Submit</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="assets/script.js"></script>
+</body>
+
+</html>
