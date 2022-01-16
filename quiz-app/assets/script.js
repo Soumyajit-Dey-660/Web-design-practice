@@ -5,9 +5,12 @@ let quizQuestionDiv = document.getElementById('quiz-questions');
 let allDoneDiv = document.getElementById('all-done');
 let leaderboard = document.getElementById('leaderboard');
 
+let startTimer;
 let currentHighScores = {};
 let currentQuestionNumber = 0;
 let totalScore = 0;
+let TOTAL_TIME_ALLOTED = 50;
+let timer = TOTAL_TIME_ALLOTED;
 let prevQuestionAnswer = '';
 let quizQuestions = [{
     "id": 0,
@@ -90,6 +93,7 @@ let addScore = () => {
     initialsDiv.value = '';
     allDoneDiv.style.display = 'none';
     homePageDiv.style.display = 'block';
+    document.getElementById('timer-text').innerHTML = ``;
 }
 
 let clearHighscores = () => {
@@ -118,9 +122,32 @@ let showHomePage = () => {
     homePageDiv.style.display = 'block';
 }
 
+let timeOver = (startTimer) => {
+    clearInterval(startTimer);
+    document.getElementById('timer').innerHTML = `Expired!`;
+    allDone();
+}
+
+let initializeTimer = () => {
+    console.log('called');
+    return () => setInterval(() => {
+        timer--;
+        document.getElementById('timer-text').innerHTML = `${timer}s`;
+        if (timer < 0) {
+            console.log(startTimer)
+            timeOver(startTimer);
+        }
+    }, 1000);
+}
+
 let startQuiz = () => {
     homePageDiv.style.display = 'none';
+    timer = TOTAL_TIME_ALLOTED;
     formQuizQuestion();
+    console.log(startTimer);
+    if (startTimer === undefined) {
+        startTimer = initializeTimer()();
+    }
 }
 
 let formQuizQuestion = () => {
@@ -147,7 +174,10 @@ let checkAnswer = (element) => {
         totalScore++;
     } else {
         prevQuestionAnswer = "Incorrect";
-        // Take away 10 seconds from timer
+        timer -= 10;
+        if (timer < 0) {
+            timeOver(startTimer);
+        }
     }
     const evaluation = document.getElementById('evaluation');
     evaluation.innerHTML = prevQuestionAnswer;
@@ -164,6 +194,8 @@ let moveOntoNextQuestion = () => {
 }
 
 let allDone = () => {
+    // document.getElementById('timer').innerHTML = `Expired!`;
+    timer = TOTAL_TIME_ALLOTED;
     leaderboard.style.pointerEvents = 'none';
     currentQuestionNumber = 0;
     const prevQuestionDiv = document.getElementById('question-description');
