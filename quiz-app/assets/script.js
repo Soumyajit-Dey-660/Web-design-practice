@@ -3,6 +3,8 @@ let homePageDiv = document.getElementById('start-quiz');
 let scoreList = document.getElementById('score-list');
 let quizQuestionDiv = document.getElementById('quiz-questions');
 let allDoneDiv = document.getElementById('all-done');
+let leaderboard = document.getElementById('leaderboard');
+
 let currentHighScores = {};
 let currentQuestionNumber = 0;
 let totalScore = 0;
@@ -70,10 +72,24 @@ let showLeaderboard = () => {
     highscoresList.style.display = 'block';
 }
 
-let addScore = (initials, score) => {
+let addScore = () => {
+    const initialsDiv = document.getElementById('initials');
+    const initials = initialsDiv.value;
+    if (initials === '' || initials === undefined || initials === null) {
+        alert('Please enter your initials to submit the score!');
+        return;
+    }
+    if (checkIfInitialsExist(initials)) {
+        alert(`Choose different initials. ${initials} already exists.`);
+        return;
+    }
     const highScoresObj = JSON.parse(localStorage.getItem('highScores')) || {};
-    highScoresObj[initials] = score;
+    highScoresObj[initials] = totalScore;
     localStorage.setItem('highScores', JSON.stringify(highScoresObj));
+    leaderboard.style.pointerEvents = 'auto';
+    initialsDiv.value = '';
+    allDoneDiv.style.display = 'none';
+    homePageDiv.style.display = 'block';
 }
 
 let clearHighscores = () => {
@@ -148,21 +164,26 @@ let moveOntoNextQuestion = () => {
 }
 
 let allDone = () => {
-    // View highscore click disable and pop up alert
+    leaderboard.style.pointerEvents = 'none';
     currentQuestionNumber = 0;
     const prevQuestionDiv = document.getElementById('question-description');
     prevQuestionDiv.remove();
     document.getElementById("score").innerHTML = totalScore;
     allDoneDiv.style.display = 'block';
+}
 
+let checkIfInitialsExist = initials => {
+    const highScoresObj = JSON.parse(localStorage.getItem('highScores')) || {};
+    return Object.keys(highScoresObj).includes(initials);
 }
 
 
 document.getElementById('start-quiz-btn').addEventListener('click', startQuiz);
-document.getElementById('leaderboard').addEventListener('click', showLeaderboard);
+leaderboard.addEventListener('click', showLeaderboard);
 document.getElementById('clear-scores').addEventListener('click', clearHighscores);
 document.getElementById('go-back-btn').addEventListener('click', showHomePage);
+document.getElementById('all-done-submit').addEventListener('click', addScore);
 
 highscoresList.style.display = 'none';
 allDoneDiv.style.display = 'none';
-// homePageDiv.style.display = 'none'; // Uncomment this line
+// TODO: Add timer functionality
